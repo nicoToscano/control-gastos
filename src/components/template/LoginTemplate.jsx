@@ -1,10 +1,14 @@
 import style from 'styled-components';
 import { Button } from '../moleculas/Button';
 import {v} from "../../styles/variables";
+import { useAuthStore } from '../../store/AuthStore';
 
 export function LoginTemplate() {
+  const { singWithGoogle } = useAuthStore();
+
+
   return (
-    <Container img={v.imagenfondo}>
+    <Container>
         <div className='contentCard'>
           <span className='version'>Version 1.0 UIO</span>
           <div className='contentImg'>
@@ -15,16 +19,15 @@ export function LoginTemplate() {
           </Titulo>
           <p className='slogan'>Administra tus finanzas de manera eficiente y sencilla. 💵</p>
           <ContainerButton>
-            <Button title="Iniciar Sesión" bgcolor={v.colorSecundario} icon={<v.iconogoogle/>} />
+            <Button title="Iniciar Sesión" bgcolor={v.colorSecundario} icon={<v.iconogoogle/>} func={singWithGoogle}/>
           </ContainerButton>          
         </div>
-
     </Container>
   );
 }
 
 const Container = style.div`
-  background-image: url(${props => props.img});
+  background-image: url(${v.imagenfondo});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
