@@ -24,7 +24,7 @@ function App() {
           <Container>
 
             <div className='ContentSidebar'>
-              <Sidebar />
+              <Sidebar state={sidebar} setState={setSidebar}/>
             </div>
 
             <div className='ContentBurgerMenu'>
@@ -47,7 +47,7 @@ function App() {
 const Container = styled.div`
 display: grid;
 grid-template-columns: 1fr;
-background-color: ${(props) => props.theme.whiteBg}; 
+background-color: ${(props) => props.theme.colorToggle}; 
 
 .ContentSidebar{
   display: none;  
