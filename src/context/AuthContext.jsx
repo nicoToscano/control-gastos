@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
                 if (session == null) {
                     setUser(null);
                 } else {
-                    setUser(session);
+                    setUser(session?.user.user_metadata);
                     console.log("event", event);
                     console.log("session", session);
                 }
