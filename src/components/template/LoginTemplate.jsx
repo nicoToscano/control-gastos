@@ -1,4 +1,4 @@
-import style from 'styled-components';
+import styled from 'styled-components';
 import { Button } from '../moleculas/Button';
 import {v} from "../../styles/variables";
 import { useAuthStore } from '../../store/AuthStore';
@@ -26,7 +26,7 @@ export function LoginTemplate() {
   );
 }
 
-const Container = style.div`
+const Container = styled.div`
   background-image: url(${v.imagenfondo});
   background-size: cover;
   background-repeat: no-repeat;
@@ -66,7 +66,7 @@ const Container = style.div`
     .slogan {
       color: rgba(255, 255, 255, 0.5);
       font-size: 1.2rem;
-  }
+    } 
 
   @keyframes flotar {
     0% {
@@ -79,16 +79,16 @@ const Container = style.div`
       transform: translate(0px, -0px);
     }
   }
-
+}
 `;
 
-const Titulo = style.h1`
+const Titulo = styled.h1`
   font-size: 5rem;
   font-weight: 700px;
 `;
 
 
-const ContainerButton = style.div`
+const ContainerButton = styled.div`
   display: flex;
   justify-content: center;
   margin: 2rem;

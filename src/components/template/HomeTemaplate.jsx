@@ -1,4 +1,4 @@
-import style from 'styled-components';
+import styled from 'styled-components';
 
 export function LoginTemplate() {
   return (
@@ -8,4 +8,4 @@ export function LoginTemplate() {
     );
 }
 
-const Container = style.div``;
+const Container = styled.div``;
