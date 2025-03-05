@@ -19,4 +19,9 @@ export function Home() {
 
 const Container = styled.div`
 height: 100vh;
+
+
+ h1 {
+    color: ${(props) => props.theme.text};
+ }
 `;

@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import { v } from "../../../styles/variables";
-import { LinksArray } from "../../../utils/dataEstatica";
+import { LinksArray, SecondarylinksArray, TemasData } from "../../../utils/dataEstatica";
 import { NavLink } from "react-router-dom";
 
 export function Sidebar({ state, setState }) {
     return (
-        <Main>
-            <Container sidebar={state}>
+        <Main sidebar={state}>
+
+            <span className="sidebarBtn" onClick={() => setState(!state)}>
+                {<v.iconoflechaderecha />}
+            </span>
+
+            <Container sidebar={state} className={state ? "active" : ""}>
                 <div className="logoContent">
                     <div className="imgContent">
                         <img src={v.logo} alt="" />
@@ -16,14 +21,44 @@ export function Sidebar({ state, setState }) {
 
                 {LinksArray.map(({ label, icon, to }) => (
 
-                    <NavLink to={to}>
-                        <div className="link">
-                            <div className="icon">{icon}</div>
-                            <span>{label}</span>
-                        </div>
-                    </NavLink>
+                    <div className={state ? "linkContainer active" : "linkContainer"}>
 
+                        <NavLink className={({ isActive }) => `Links${isActive ? ` active` : ``}`} to={to}>
+                            <div className="linkIcon">{icon}</div>
+                            {state && (<span>{label}</span>)}
+                        </NavLink>
+
+                    </div>
                 ))}
+
+                <Divider />
+
+                {SecondarylinksArray.map(({ label, icon, to }) => (
+
+                    <div className={state ? "linkContainer active" : "linkContainer"}>
+
+                        <NavLink className={({ isActive }) => `Links${isActive ? ` active` : ``}`} to={to}>
+                            <div className="linkIcon">{icon}</div>
+                            {state && (<span>{label}</span>)}
+                        </NavLink>
+
+                    </div>
+                ))}
+
+                <Divider />
+
+                {TemasData.map(({icono, descripcion}) => (
+
+                    <div className={state ? "linkContainer active" : "linkContainer"}>
+
+                        <div className="Links">
+                            <div className="linkIcon">{icono}</div>
+                            {state && (<span>{descripcion}</span>)}
+                        </div>
+
+                    </div>
+                ))}
+
 
                 <Divider />
 
@@ -38,8 +73,14 @@ color: ${(props) => props.theme.text};
 background-color: ${(props) => props.theme.bg};
 position: fixed;
 padding-top: 20px;
-z-index: 100;
+z-index: 1;
 height: 100%;
+width: 65px;
+transition: all 0.3s ease-in-out;
+
+&.active {
+    width: 220px;
+}
 
 .logoContent{
     display: flex;
@@ -63,7 +104,6 @@ height: 100%;
         }       
         
     }
-
     h2 {
         display: ${({ sidebar }) => (sidebar ? `block` : `none`)};
     }
@@ -85,16 +125,82 @@ height: 100%;
     }
 }
 
+.linkContainer{
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+    padding: 0 5%;
+    position: relative;
+
+    &:hover{
+        background-color: ${(props) => props.theme.bg4};
+    }
+
+    .Links {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: calc(${() => v.smSpacing} - 2px) 0;
+        color: ${(props) => props.theme.text};
+        height: 60px;
+
+        .linkIcon{
+            padding: ${() => v.smSpacing} ${() => v.smSpacing};
+            display: flex;
+            svg {
+                font-size: 25px;
+            }
+        }
+
+        &.active {
+
+            color: ${(props) => props.theme.bg5};
+            &::before{
+            content:"";
+            position: absolute;
+            height: 100%;
+            background-color: ${(props) => props.theme.bg5};
+            width: 5px;
+            border-radius: 0 5px 5px 0;
+            left: 0;
+            } 
+        }
+
+    }
+}
+
 
 `;
 
 const Main = styled.div`
+  .sidebarBtn {
+    position: fixed;
+    top: 70px;
+    left: 42px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    
 
+    background-color: ${(props) => props.theme.bgtgderecha};
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+
+    z-index:2;
+
+    transform: ${({ sidebar }) => (sidebar ? `translateX(162px) rotate(0deg)` : `rotate(180deg)`)};
+
+  }
 `;
 
 const Divider = styled.div`
-    height: 1px;
-    width: 100%;
-    background-color: ${(props) => props.theme.bg4};
-    margin: ${v.lgSpacing} 0;
+  height: 1px;
+  width: 100%;
+  background: ${(props) => props.theme.bg4};
+  margin: ${() => v.lgSpacing} 0;
 `;

@@ -11,7 +11,7 @@ import { Device } from './styles/breakpoints'
 export const ThemeContext = createContext(null)
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const themeStyles = theme === 'light' ? Light : Dark;
 
   const [sidebar, setSidebar] = useState(false);
@@ -21,7 +21,7 @@ function App() {
       <ThemeProvider theme={themeStyles}>
         <AuthContextProvider>
 
-          <Container>
+          <Container className={sidebar ? 'active' : ''}>
 
             <div className='ContentSidebar'>
               <Sidebar state={sidebar} setState={setSidebar}/>
@@ -47,7 +47,9 @@ function App() {
 const Container = styled.div`
 display: grid;
 grid-template-columns: 1fr;
-background-color: ${(props) => props.theme.colorToggle}; 
+background-color: ${(props) => props.theme.bg2};
+
+transition: all 0.3s ease-in-out;
 
 .ContentSidebar{
   display: none;  
@@ -59,6 +61,11 @@ background-color: ${(props) => props.theme.colorToggle};
 
 @media ${Device.tablet} {
   grid-template-columns: 65px 1fr;
+
+  &.active {
+  grid-template-columns: 220px 1fr;
+}
+
   .ContentSidebar{
     display: block;
   }

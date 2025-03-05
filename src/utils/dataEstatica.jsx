@@ -45,7 +45,7 @@ export const DataDesplegableTipo = [
 //data SIDEBAR
 export const LinksArray = [
   {
-    label: "Home",
+    label: "Inicio",
     icon: <AiOutlineHome />,
     to: "/",
   },
