@@ -11,10 +11,10 @@ import { Device } from './styles/breakpoints'
 export const ThemeContext = createContext(null)
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
   const themeStyles = theme === 'light' ? Light : Dark;
 
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
 
   return (
     <ThemeContext.Provider value={{ setTheme, theme }}>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { v } from "../../../styles/variables";
 import { LinksArray, SecondarylinksArray, TemasData } from "../../../utils/dataEstatica";
 import { NavLink } from "react-router-dom";
+import {SideBarCard} from "./SidebarCard";
 
 export function Sidebar({ state, setState }) {
     return (
@@ -16,7 +17,7 @@ export function Sidebar({ state, setState }) {
                     <div className="imgContent">
                         <img src={v.logo} alt="" />
                     </div>
-                    <h2>Control Gastos</h2>
+                    <h2>Coins</h2>
                 </div>
 
                 {LinksArray.map(({ label, icon, to }) => (
@@ -47,20 +48,7 @@ export function Sidebar({ state, setState }) {
 
                 <Divider />
 
-                {TemasData.map(({icono, descripcion}) => (
-
-                    <div className={state ? "linkContainer active" : "linkContainer"}>
-
-                        <div className="Links">
-                            <div className="linkIcon">{icono}</div>
-                            {state && (<span>{descripcion}</span>)}
-                        </div>
-
-                    </div>
-                ))}
-
-
-                <Divider />
+                {state && (<SideBarCard />)}
 
             </Container>
         </Main>
@@ -77,6 +65,18 @@ z-index: 1;
 height: 100%;
 width: 65px;
 transition: all 0.3s ease-in-out;
+overflow-y: auto;
+overflow-x: hidden;
+
+&::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+}
+
+&::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.colorScroll};
+    border-radius: 10px;
+}
 
 &.active {
     width: 220px;
@@ -106,6 +106,7 @@ transition: all 0.3s ease-in-out;
     }
     h2 {
         display: ${({ sidebar }) => (sidebar ? `block` : `none`)};
+        font-weight: 800;
     }
 
     @keyframes flotar {
@@ -167,8 +168,6 @@ transition: all 0.3s ease-in-out;
 
     }
 }
-
-
 `;
 
 const Main = styled.div`
