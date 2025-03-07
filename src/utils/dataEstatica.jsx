@@ -74,7 +74,7 @@ export const SecondarylinksArray = [
   {
     label: "Configuración",
     icon: <AiOutlineSetting />,
-    to: "/configurar",
+    to: "/settings",
   },
   {
     label: "Acerca de",
