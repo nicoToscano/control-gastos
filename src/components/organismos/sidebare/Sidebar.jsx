@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { v } from "../../../styles/variables";
-import { LinksArray, SecondarylinksArray, TemasData } from "../../../utils/dataEstatica";
+import { LinksArray, SecondarylinksArray} from "../../../utils/dataEstatica";
 import { NavLink } from "react-router-dom";
 import {SideBarCard} from "./SidebarCard";
 
@@ -20,9 +20,9 @@ export function Sidebar({ state, setState }) {
                     <h2>Coins</h2>
                 </div>
 
-                {LinksArray.map(({ label, icon, to }) => (
+                {LinksArray.map(({ label, icon, to }, index) => (
 
-                    <div className={state ? "linkContainer active" : "linkContainer"}>
+                    <div key={index} className={state ? "linkContainer active" : "linkContainer"}>
 
                         <NavLink className={({ isActive }) => `Links${isActive ? ` active` : ``}`} to={to}>
                             <div className="linkIcon">{icon}</div>
@@ -34,9 +34,9 @@ export function Sidebar({ state, setState }) {
 
                 <Divider />
 
-                {SecondarylinksArray.map(({ label, icon, to }) => (
+                {SecondarylinksArray.map(({ label, icon, to }, index) => (
 
-                    <div className={state ? "linkContainer active" : "linkContainer"}>
+                    <div key={index} className={state ? "linkContainer active" : "linkContainer"}>
 
                         <NavLink className={({ isActive }) => `Links${isActive ? ` active` : ``}`} to={to}>
                             <div className="linkIcon">{icon}</div>
@@ -86,17 +86,17 @@ overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
 
     .imgContent{
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 30px;
+        width: 35px;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
 
-        transform: ${({ sidebar }) => (sidebar ? `scale(0.7)` : `scale(1.5)`)} rotate(${props => (props.theme.logorotate)});
+        transform: ${({ sidebar }) => (sidebar ? `scale(0.7)` : `scale(1.1)`)} rotate(${props => (props.theme.logorotate)});
 
         img{
             width: 100%;
@@ -134,12 +134,14 @@ overflow-x: hidden;
 
     &:hover{
         background-color: ${(props) => props.theme.bg4};
+        border-radius: 15px;
     }
 
     .Links {
         display: flex;
         align-items: center;
         text-decoration: none;
+        margin-left: 10px;
         padding: calc(${() => v.smSpacing} - 2px) 0;
         color: ${(props) => props.theme.text};
         height: 60px;

@@ -1,5 +1,6 @@
 import { MyRoutes } from './routes/routes'
 import { createContext } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Light, Dark } from './styles/themes'
 import { ThemeProvider, styled } from 'styled-components'
 import { useState } from 'react'
@@ -13,30 +14,35 @@ export const ThemeContext = createContext(null)
 function App() {
   const [theme, setTheme] = useState('light');
   const themeStyles = theme === 'light' ? Light : Dark;
-
-  const [sidebar, setSidebar] = useState(true);
+  const { pathname } = useLocation();
+  const [sidebarOpened, setSidebarOpened] = useState(true);
 
   return (
     <ThemeContext.Provider value={{ setTheme, theme }}>
       <ThemeProvider theme={themeStyles}>
         <AuthContextProvider>
 
-          <Container className={sidebar ? 'active' : ''}>
+          {
+            pathname != '/login' ? (
 
-            <div className='ContentSidebar'>
-              <Sidebar state={sidebar} setState={setSidebar}/>
-            </div>
+              <Container className={sidebarOpened ? 'active' : ''}>
 
-            <div className='ContentBurgerMenu'>
-              <Burgermenu />
-            </div>
+                <div className='ContentSidebar'>
+                  <Sidebar state={sidebarOpened} setState={() => setSidebarOpened(!sidebarOpened)} />
+                </div>
 
+                <div className='ContentBurgerMenu'>
+                  <Burgermenu />
+                </div>
 
-            <ContainerBody>
+                <ContainerBody>
+                  <MyRoutes />
+                </ContainerBody>
+
+              </Container>
+            ) : (
               <MyRoutes />
-            </ContainerBody>
-
-          </Container>
+            )}
 
         </AuthContextProvider>
       </ThemeProvider>
