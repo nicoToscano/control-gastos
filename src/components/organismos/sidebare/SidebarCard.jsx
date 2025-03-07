@@ -13,7 +13,7 @@ export function SideBarCard() {
 
                 <div className="contentButton">
 
-                <Button className="btnSideBarCard" title="Contactar" bgcolor="#DAC1FF" />
+                <Button className="btnSideBarCard" title="Contactar" bgcolor="#FFE4E0" />
                 </div>
 
             </div>
@@ -52,7 +52,7 @@ const Container = styled.div`
 
         .circle1, .circle2{
             position: absolute;
-            background: ${(props) => props.theme.whiteBg};
+            background: #FFE4E0;
             border-radius: 50%;
             opacity: 0.7;
             z-index: -1;
@@ -91,10 +91,10 @@ const Container = styled.div`
             transform: scale(1.2);
         }
 
-        &:hover h3 {
-            color: #fff;
+        /* &:hover h3 {
+            color: #ffffff;
             opacity: 0.9;
-        }
+        } */
     }
 
 `

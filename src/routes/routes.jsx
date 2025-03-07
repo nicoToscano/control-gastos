@@ -8,14 +8,14 @@ import { UserAuth } from '../context/AuthContext';
 export function MyRoutes() {
     const { user } = UserAuth();
     return (
-        
-            <Routes>
+
+        <Routes>
             <Route path="/login" element={<Login />} />
             <Route element={<ProtectedRoutes user={user} redirectTo="/login" />}>
                 <Route path="/" element={<Home />} />
                 <Route path="/settings" element={<Settings />} />
             </Route>
-            </Routes>
-        
+        </Routes>
+
     );
-  }
+}
