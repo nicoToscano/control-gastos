@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 import { Header } from '../organismos/Header';
+import { useState } from 'react';
 
 export function SettingsTemplate() {
+
+  const [state, setState] = useState(false);
+
   return (
     <Container>
       <header className="header">
-        <Header />
+        <Header stateConfig={{state: state, setState: () => setState(!state)}}/>
       </header>
 
       <section className="section1"></section>

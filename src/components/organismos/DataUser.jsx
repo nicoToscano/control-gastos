@@ -5,12 +5,12 @@ import { v } from "../../styles/variables";
 import { ListaMenuDesplegable } from "../moleculas/ListaMenuDesplegable";
 import { DesplegableUser } from "../../utils/dataEstatica";
 
-export function DataUser() {
+export function DataUser({stateConfig}) {
 
     const { user } = UserAuth();
 
     return (
-        <Container>
+        <Container onClick={stateConfig.setState}>
             <div className="imgContainer">
                 <img src={user.picture} alt="user" />
             </div>
@@ -18,7 +18,13 @@ export function DataUser() {
 
             <span className="nombre">{user.name}</span>
 
-            <ListaMenuDesplegable data={DesplegableUser} top="60px" />
+            {
+                stateConfig.state && (
+                    <ListaMenuDesplegable data={DesplegableUser} top="60px" />
+                )
+            }
+
+            
 
         </Container>
     );
