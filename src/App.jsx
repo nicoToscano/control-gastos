@@ -12,7 +12,7 @@ import { Device } from './styles/breakpoints'
 export const ThemeContext = createContext(null)
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const themeStyles = theme === 'light' ? Light : Dark;
   const { pathname } = useLocation();
   const [sidebarOpened, setSidebarOpened] = useState(true);
