@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { UserAuth } from "../../context/AuthContext";
 import { ButtonCircle } from '../moleculas/ButtonCircle';
 import { v } from "../../styles/variables";
+import { ListaMenuDesplegable } from "../moleculas/ListaMenuDesplegable";
+import { DesplegableUser } from "../../utils/dataEstatica";
 
 export function DataUser() {
 
@@ -15,6 +17,8 @@ export function DataUser() {
             <ButtonCircle icon={<v.iconocorona />} width="25px" height="25px" bgColor="#fff" textColor="#181616" fontSize="11px" translateX="-60px" translateY="-20px" />
 
             <span className="nombre">{user.name}</span>
+
+            <ListaMenuDesplegable data={DesplegableUser} top="60px" />
 
         </Container>
     );
