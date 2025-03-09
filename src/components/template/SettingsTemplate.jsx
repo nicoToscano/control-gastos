@@ -12,7 +12,7 @@ export function SettingsTemplate() {
 
       <section className="section2"></section>
 
-      <main></main>
+      <main className='main'></main>
     </Container>
   );
 }
@@ -32,28 +32,28 @@ grid-template:
 
 .header {
   grid-area: header;
-  background-color: rgb(229, 67, 26);
+  background-color: rgb(255, 210, 199);
   display: flex;
   align-items: center;
 }
 
 .section1 {
   grid-area: section1;
-  background-color: rgb(255, 0, 0);
+  background-color: rgb(221, 255, 176);
   display: flex;
   align-items: center;
 }
 
 .section2{
   grid-area: section2;
-  background-color: rgb(0, 255, 13);
+  background-color: rgb(164, 181, 255);
   display: flex;
   align-items: center;
 }
 
 main {
   grid-area: main;
-  background-color: rgb(255, 255, 0);
+  background-color: rgb(199, 239, 255);
 }
 
 

@@ -129,24 +129,23 @@ overflow-x: hidden;
 .linkContainer{
     margin: 5px 0;
     transition: all 0.3s ease-in-out;
-    padding: 0 5%;
     position: relative;
 
     &:hover{
-        background-color: ${(props) => props.theme.bg4};
-        border-radius: 15px;
+        background-color: ${(props) => props.theme.bg5active};
     }
 
     .Links {
         display: flex;
         align-items: center;
         text-decoration: none;
-        margin-left: 10px;
+        
         padding: calc(${() => v.smSpacing} - 2px) 0;
         color: ${(props) => props.theme.text};
         height: 60px;
 
         .linkIcon{
+            margin-left: 10px;
             padding: ${() => v.smSpacing} ${() => v.smSpacing};
             display: flex;
             svg {
@@ -156,7 +155,9 @@ overflow-x: hidden;
 
         &.active {
 
-            color: ${(props) => props.theme.bg5};
+            color: ${(props) => props.theme.text};
+            background-color: ${(props) => props.theme.bg5active};
+            width: 100%;
             &::before{
             content:"";
             position: absolute;
@@ -183,6 +184,7 @@ const Main = styled.div`
     
 
     background-color: ${(props) => props.theme.bgtgderecha};
+    color: ${(props) => props.theme.text};
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
     display: flex;

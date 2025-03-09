@@ -22,7 +22,8 @@ export const Light ={
    bg3: "#fff",
    primary: "rgb(52, 131, 235)",
    bg4:"#eaeaea",
-   bg5:"#ffa2a7",
+   bg5:"#ffa2a730",
+   bg5active:"#ffa2a726;",
    bgtotal:"#EDF3FB",
    bgtgderecha:"#eeeeee",
    colorToggle:"#F9743B",
@@ -33,6 +34,7 @@ export const Light ={
    sizeoficon:"1.4em",
    colorSubtitle:"#2c2c2c",
    colorScroll:"#cac9ca"
+   
 
 }
 export const Dark = {
@@ -60,7 +62,8 @@ export const Dark = {
    bg3: "#2C2C2E",
    primary: "rgb(52, 131, 235)",
    bg4:"#4E4E50",
-   bg5:"#FFA8AD",
+   bg5:"#ffa8ac",
+   bg5active:"#ffa2a726",
    bgtotal:"#1C1C1E",
    colorToggle:"rgb(52, 131, 235)",
    translateToggle:"26px",

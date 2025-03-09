@@ -78,7 +78,7 @@ const Container = styled.div`
             margin-top: 1rem;
             padding: 1rem 0;
             font-weight: bolder;
-            color: ${(props) => props.theme.text};
+            color: #000;
             transition: all 0.3s ease-in-out;
         }
 
