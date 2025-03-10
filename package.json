@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",
+    "@tanstack/react-query": "^5.67.2",
     "@tanstack/react-query-devtools": "^5.66.9",
     "iso-country-currency": "^0.7.2",
     "react": "^19.0.0",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@tanstack/eslint-plugin-query": "^5.67.2",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react-swc": "^3.8.0",

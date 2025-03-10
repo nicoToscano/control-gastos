@@ -18,7 +18,7 @@ export const MostrarUsuarios = async () => {
             .select()
             .eq('idauth_supabase', idAuthSupabase);
         if (error) alert("MostrarUsuarios", error);
-        return data[0];
+        if (data) return data[0];
 
     } catch (error) {
         alert(error.error_description || error.message + 'MostrarUsuarios');

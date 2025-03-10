@@ -8,6 +8,9 @@ import { AuthContextProvider } from './context/AuthContext'
 import { Sidebar } from './components/organismos/sidebare/Sidebar'
 import { Burgermenu } from './components/organismos/burgerMenu/Burgermenu'
 import { Device } from './styles/breakpoints'
+import { useUsuariosStore } from './store/UsuariosStore'
+import { useQuery} from '@tanstack/react-query'
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const ThemeContext = createContext(null)
 
@@ -16,6 +19,16 @@ function App() {
   const themeStyles = theme === 'light' ? Light : Dark;
   const { pathname } = useLocation();
   const [sidebarOpened, setSidebarOpened] = useState(true);
+  const { mostrarUsuarios } = useUsuariosStore();
+  const { isLoading, error } = useQuery({
+    queryKey: ['usuarios'],
+    queryFn: () => mostrarUsuarios(),
+  });
+  
+
+  if (isLoading) return <h1>Cargando...</h1>
+
+  if (error) return <h1>Error: {error.message}</h1>
 
   return (
     <ThemeContext.Provider value={{ setTheme, theme }}>
@@ -43,7 +56,7 @@ function App() {
             ) : (
               <MyRoutes />
             )}
-
+            <ReactQueryDevtools initialIsOpen={true} />
         </AuthContextProvider>
       </ThemeProvider>
     </ThemeContext.Provider>

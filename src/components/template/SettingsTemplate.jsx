@@ -4,14 +4,15 @@ import { useState } from 'react';
 import { Selector } from '../organismos/Selector'
 import { v } from '../../styles/variables';
 import { ListaPaises } from '../organismos/ListaPaises'
+import { useUsuariosStore } from '../../store/UsuariosStore';
 
 export function SettingsTemplate() {
-
+  const { datausuarios } = useUsuariosStore();
   const [state, setState] = useState(false);
   const [stateListaPaises, setStateListaPaises] = useState(false);
   const [select, setSelect] = useState([]);
-  const moneda = select.symbol;
-  const pais = select.countryName;
+  const moneda = select.symbol ? select.symbol : datausuarios.moneda;
+  const pais = select.countryName ? select.countryName : datausuarios.pais;
   const paisSeleccionado = "😊 " + moneda + " " + pais;
 
   return (
