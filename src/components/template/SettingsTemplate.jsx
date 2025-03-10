@@ -1,20 +1,39 @@
 import styled from 'styled-components';
 import { Header } from '../organismos/Header';
 import { useState } from 'react';
+import { Selector } from '../organismos/Selector'
+import { v } from '../../styles/variables';
+import { ListaPaises } from '../organismos/ListaPaises'
 
 export function SettingsTemplate() {
 
   const [state, setState] = useState(false);
+  const [stateListaPaises, setStateListaPaises] = useState(false);
+  const [select, setSelect] = useState([]);
 
   return (
     <Container>
       <header className="header">
-        <Header stateConfig={{state: state, setState: () => setState(!state)}}/>
+        <Header stateConfig={{ state: state, setState: () => setState(!state) }} />
       </header>
 
-      <section className="section1"></section>
+      <section className="section1">
+        <h1>Ajustes</h1>
+      </section>
 
-      <section className="section2"></section>
+      <section className="section2">
+        <ContentCard>
+          <span>Moneda:</span>
+          <Selector state={stateListaPaises} color={v.colorselector} funcion={() => setStateListaPaises(!stateListaPaises)} />
+          {
+            stateListaPaises &&
+            (
+              <ListaPaises setSelect={(p) => setSelect(p)} setState={() => setStateListaPaises(!stateListaPaises)} />
+            )
+          }
+
+        </ContentCard>
+      </section>
 
       <main className='main'></main>
     </Container>
@@ -31,35 +50,44 @@ display: grid;
 grid-template: 
   "header" 100px
   "section1" 100px
-  "section2" 100px
+  "section2" 50px
   "main" auto;
 
 .header {
   grid-area: header;
-  background-color: rgb(255, 210, 199);
+  background-color: rgba(255, 210, 199, 0.26);
   display: flex;
   align-items: center;
 }
 
 .section1 {
   grid-area: section1;
-  background-color: rgb(221, 255, 176);
+  background-color: rgba(221, 255, 176, 0.226);
   display: flex;
   align-items: center;
 }
 
 .section2{
   grid-area: section2;
-  background-color: rgb(164, 181, 255);
+  background-color: rgba(164, 181, 255, 0.212);
   display: flex;
   align-items: center;
 }
 
 main {
   grid-area: main;
-  background-color: rgb(199, 239, 255);
+  background-color: rgba(199, 239, 255, 0.26);
 }
 
-
-
 `;
+
+const ContentCard = styled.div`
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+`

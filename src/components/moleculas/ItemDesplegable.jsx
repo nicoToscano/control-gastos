@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Icono } from "../atomos/Icono";
 
-export function ItemDesplegable({ item }) {
+export function ItemDesplegable({ item, funcion }) {
     return (
-        <Container>
+        <Container onClick={funcion}>
             <Icono className="icono">{item.icono}</Icono>
             <span className="texto">{item.text}</span>
 

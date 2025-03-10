@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import { useAuthStore } from "../../store/AuthStore";
 import { UserAuth } from "../../context/AuthContext";
 import { ButtonCircle } from '../moleculas/ButtonCircle';
 import { v } from "../../styles/variables";
 import { ListaMenuDesplegable } from "../moleculas/ListaMenuDesplegable";
 import { DesplegableUser } from "../../utils/dataEstatica";
 
-export function DataUser({stateConfig}) {
+export function DataUser({ stateConfig }) {
 
     const { user } = UserAuth();
+    const { signout } = useAuthStore();
+    const functionPorTipo = async (tipo) => {
+        if (tipo === "cerrarsesion") await signout();
+    };
 
     return (
         <Container onClick={stateConfig.setState}>
@@ -20,11 +25,12 @@ export function DataUser({stateConfig}) {
 
             {
                 stateConfig.state && (
-                    <ListaMenuDesplegable data={DesplegableUser} top="60px" />
+                    <ListaMenuDesplegable data={DesplegableUser} top="60px" 
+                    funcion={(p) => functionPorTipo(p)} />
                 )
             }
 
-            
+
 
         </Container>
     );

@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { ItemDesplegable } from "./ItemDesplegable";
 import { v } from "../../styles/variables";
 
-export function ListaMenuDesplegable({data, top}) {
+export function ListaMenuDesplegable({data, top, funcion}) {
     return (
         <Container top={top}>
             {
                 data.map((item, index) => {
                     return (
-                    <ItemDesplegable key={index} item={item}/>)
+                        <ItemDesplegable key={index} item={item} funcion={() => funcion(item.tipo)} />
+                    )
                 })
             }
         </Container>
