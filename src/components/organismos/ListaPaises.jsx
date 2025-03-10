@@ -47,10 +47,38 @@ export function ListaPaises({ setSelect, setState }) {
 
 const Container = styled.div`
 
+    margin-top: 10px;
+    position: absolute;
+    top: 88%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: ${(props) => props.theme.bg4};
+    border-radius: 10px;
+    border: 3px solid #3a3a3a;
+    padding: 10px;
+    gap: 10px;
+    color: ${(props) => props.theme.text};
 
-    .close {
-        cursor: pointer;
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: inherit;
+
+        .close {
+            cursor: pointer;
+            font-size: 25px;
+            transition: all 0.3s;
+
+            &:hover {
+                color: ${() => v.colorselector};
+                transform: scale(1.2);
+            }
+
+        }
     }
+    
 `
 
 const ItemContainer = styled.section`

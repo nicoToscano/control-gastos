@@ -10,6 +10,9 @@ export function SettingsTemplate() {
   const [state, setState] = useState(false);
   const [stateListaPaises, setStateListaPaises] = useState(false);
   const [select, setSelect] = useState([]);
+  const moneda = select.symbol;
+  const pais = select.countryName;
+  const paisSeleccionado = "😊 " + moneda + " " + pais;
 
   return (
     <Container>
@@ -24,7 +27,7 @@ export function SettingsTemplate() {
       <section className="section2">
         <ContentCard>
           <span>Moneda:</span>
-          <Selector state={stateListaPaises} color={v.colorselector} funcion={() => setStateListaPaises(!stateListaPaises)} />
+          <Selector state={stateListaPaises} color={v.colorselector} funcion={() => setStateListaPaises(!stateListaPaises)} texto1={paisSeleccionado} />
           {
             stateListaPaises &&
             (
