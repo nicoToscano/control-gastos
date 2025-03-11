@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { MostrarUsuarios } from "../supabase/crudUsuario";
+import { ActualizarTemaMonedaUser, MostrarUsuarios } from "../supabase/crudUsuario";
 
 export const useUsuariosStore = create((set, get) => ({
     datausuarios: [],
@@ -12,5 +12,9 @@ export const useUsuariosStore = create((set, get) => ({
             return [];
         }
     },
+
+    editarTemaMonedaUser: async (p) => {
+        await ActualizarTemaMonedaUser (p);
+    }
 
 }));
