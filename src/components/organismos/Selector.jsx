@@ -19,7 +19,7 @@ const Container = styled.div`
     align-items: center;
     height: 100%;
     cursor: pointer;
-    border: 2px solid ${(props) => props.color};
+    border: 5px solid ${(props) => props.color};
     border-radius: 10px;
     padding: 10px;
     gap: 10px;
@@ -36,8 +36,9 @@ const Container = styled.div`
         transform: rotate(180deg);
     }
 
+    background-color: ${(props) => props.color};
+    
     &:hover {
-        background-color: ${(props) => props.color};
-        color: ${(props) => props.theme.text};
+        color: ${(props) => props.color};
     }
 `

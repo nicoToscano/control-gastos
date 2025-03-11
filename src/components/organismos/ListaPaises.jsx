@@ -4,6 +4,8 @@ import { InputBuscadorLista } from '../moleculas/InputBuscadorLista';
 import iso from 'iso-country-currency';
 import { ConvertirCapital } from '../../utils/Conversiones'
 import { useState } from 'react';
+import { Device } from '../../styles/breakpoints';
+import { BtnCerrar } from '../atomos/btnCerrar';
 
 export function ListaPaises({ setSelect, setState }) {
 
@@ -25,9 +27,9 @@ export function ListaPaises({ setSelect, setState }) {
 
     return (
         <Container>
-            <header className='header'>
-                <span>Busca tu país</span>
-                <span className="close" onClick={setState}>{<v.iconocerrar />}</span>
+            <header className='headerSearch'>
+                <span className='headerText'>Busca tu país</span>
+                <BtnCerrar funcion={setState} />
             </header>
             <InputBuscadorLista onChange={buscar} placeholder='Buscar...' />
             {
@@ -50,7 +52,7 @@ const Container = styled.div`
     margin-top: 10px;
     position: absolute;
     top: 88%;
-    width: 100%;
+    width: 500px;
     display: flex;
     flex-direction: column;
     background-color: ${(props) => props.theme.bg4};
@@ -60,23 +62,18 @@ const Container = styled.div`
     gap: 10px;
     color: ${(props) => props.theme.text};
 
-    .header{
+    z-index: 3;
+
+
+    @media ${Device.tablet} {
+        width: 400px;        
+    }
+
+    .headerSearch{
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: inherit;
-
-        .close {
-            cursor: pointer;
-            font-size: 25px;
-            transition: all 0.3s;
-
-            &:hover {
-                color: ${() => v.colorselector};
-                transform: scale(1.2);
-            }
-
-        }
     }
     
 `
