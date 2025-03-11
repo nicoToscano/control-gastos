@@ -18,6 +18,8 @@ const Container = styled.button`
     border: none;
     gap: 0.5em;
     background-color: initial;
+    cursor: pointer;
+    z-index: 2;
 
     .btn {
         background-color: ${props => props.bgcolor};
