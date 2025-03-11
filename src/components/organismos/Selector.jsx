@@ -36,9 +36,9 @@ const Container = styled.div`
         transform: rotate(180deg);
     }
 
-    background-color: ${(props) => props.color};
     
     &:hover {
-        color: ${(props) => props.color};
+        background-color: ${(props) => props.color};
+        color: ${(props) => props.theme.text};
     }
 `

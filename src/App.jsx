@@ -15,8 +15,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 export const ThemeContext = createContext(null)
 
 function App() {
-  const [theme, setTheme] = useState('light');
-  const themeStyles = theme === 'light' ? Light : Dark;
+  const [theme, setTheme] = useState('Dark');
+  const themeStyles = theme === 'Light' ? Light : Dark;
   const { pathname } = useLocation();
   const [sidebarOpened, setSidebarOpened] = useState(true);
   const { mostrarUsuarios } = useUsuariosStore();

@@ -21,14 +21,14 @@ export function SettingsTemplate() {
   const pais = select.countryName ? select.countryName : datausuarios.pais;
   const paisSeleccionado = "😊 " + moneda + " " + pais;
 
-  const iconoDB = datausuarios.tema === "0" ? "🌞" : "🌙";
-  const temaDB = datausuarios.tema === "0" ? "light" : "dark";
+  const iconoDB = datausuarios.tema === "0" ? "☀️" : "🌙";
+  const temaDB = datausuarios.tema === "0" ? "Light" : "Dark";
   const temaInicial = selectTema.tema ? selectTema.tema : temaDB;
   const iconoInicial = selectTema.icono ? selectTema.icono : iconoDB;
   const temaSeleccionado = iconoInicial + " " + temaInicial;
 
   const editar = async () => {
-    const temaElegido = selectTema.descripcion === "light" ? "0" : "1";
+    const temaElegido = selectTema.descripcion === "Light" ? "0" : "1";
     const p = {
       tema: temaElegido,
       moneda: moneda,
@@ -46,7 +46,7 @@ export function SettingsTemplate() {
       </header>
 
       <section className="section1">
-        <h1>Ajustes</h1>
+        <h1>Configuración de cuenta</h1>
       </section>
 
       <section className="section2">
@@ -109,6 +109,9 @@ grid-template:
   /* background-color: rgba(221, 255, 176, 0.226); */
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.5rem;
 }
 
 .section2{
