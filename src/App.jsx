@@ -11,6 +11,7 @@ import { Device } from './styles/breakpoints'
 import { useUsuariosStore } from './store/UsuariosStore'
 import { useQuery} from '@tanstack/react-query'
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Login } from './pages/Login'
 
 export const ThemeContext = createContext(null)
 
@@ -18,7 +19,7 @@ function App() {
   const { mostrarUsuarios, datausuarios} = useUsuariosStore();
   const { pathname } = useLocation();
 
-  const theme = datausuarios.tema === "0" ? 'Light' : 'Dark';
+  const theme = datausuarios?.tema === "0" ? 'Light' : 'Dark';
 
   // const [theme, setTheme] = useState('Dark');
   const themeStyles = theme === 'Light' ? Light : Dark;
@@ -61,7 +62,7 @@ function App() {
 
               </Container>
             ) : (
-              <MyRoutes />
+              <Login />
             )}
             <ReactQueryDevtools initialIsOpen={true} />
         </AuthContextProvider>
