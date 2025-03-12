@@ -44,14 +44,14 @@ const Container = styled.div`
 
     margin-top: 10px;
     position: absolute;
-    top: 88%;
+    top: 100%;
     width: 500px;
     display: flex;
     flex-direction: column;
     background-color: ${(props) => props.theme.bg3};
     color: ${(props) => props.theme.text};
     border-radius: 10px;
-    border: 3px solid #3a3a3a;
+    border: 2px solid ${(props) => props.theme.bg5};
     padding: 10px;
     gap: 10px;
 

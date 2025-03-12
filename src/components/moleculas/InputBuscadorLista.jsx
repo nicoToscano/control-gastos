@@ -13,15 +13,16 @@ export function InputBuscadorLista({onChange, placeholder}) {
 const Container = styled.div`
     position: relative;
     input {
-        background-color: ${(props) => props.theme.bgtotal};
+        background-color: ${(props) => props.theme.bg3};
         font-size: 16px;
-        padding: 10px 10px 10px 5px;
+        padding: 10px 0px;
         display: block;
         width: 100%;
         border: none;
         border-bottom: 1px solid gray;
         color: ${(props) => props.theme.text};
         outline: none;
+        border-bottom: none;
         
         &:focus {
             border-bottom: none;

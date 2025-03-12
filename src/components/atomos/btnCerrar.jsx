@@ -18,7 +18,7 @@ const Container = styled.span`
     transition: all 0.3s;
 
     &:hover {
-        color: ${() => v.colorselector};
+        color: ${() => v.colorbgGastos};
         transform: scale(1.2);
     }
 

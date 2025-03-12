@@ -57,13 +57,13 @@ const Container = styled.div`
 
     margin-top: 10px;
     position: absolute;
-    top: 88%;
+    top: 100%;
     width: 500px;
     display: flex;
     flex-direction: column;
-    background-color: ${(props) => props.theme.bg4};
+    background-color: ${(props) => props.theme.bg3};
     border-radius: 10px;
-    border: 3px solid #3a3a3a;
+    border: 2px solid ${(props) => props.theme.bg5};
     padding: 10px;
     gap: 10px;
     color: ${(props) => props.theme.text};
@@ -93,7 +93,7 @@ const ItemContainer = styled.section`
     transition: 0.3s;
 
     &:hover {
-        background-color: #303030;
+        background-color: ${(props) => props.theme.bg5active};
     }
 
 `
