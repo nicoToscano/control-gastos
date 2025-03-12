@@ -4,11 +4,11 @@ import { v } from "../../styles/variables";
 
 export function ListaMenuDesplegable({data, top, funcion}) {
     return (
-        <Container top={top}>
+        <Container $top={top}>
             {
                 data.map((item, index) => {
                     return (
-                        <ItemDesplegable key={index} item={item} funcion={() => funcion(item.tipo)} />
+                        <ItemDesplegable key={index} item={item} funcion={() => funcion(item)} />
                     )
                 })
             }
@@ -24,7 +24,7 @@ const Container = styled.div`
     position: absolute;
     background-color: ${(props) => props.theme.bg3};
     border-radius: 22px;
-    top: ${(props) => props.top};
+    top: ${(props) => props.$top};
     box-shadow: ${v.boxshadowGray};
 
     z-index: 5;

@@ -3,7 +3,7 @@ import { v } from "../../styles/variables";
 
 export function BtnDesplegable({texto, bgColor, textColor, func}) {
     return (
-    <Container $bgColor={bgColor} onClick={func} $textColor={textColor}>
+    <Container $bgColor={bgColor} $textColor={textColor} onClick={func} >
         <span className="containerText">
             {<v.iconoFlechabajo/>}
             <h6>{texto}</h6>
@@ -19,5 +19,17 @@ const Container = styled.div`
     font-size: 32px;
     padding: 0.9rem 2.3rem;
     border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    .containerText{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &:hover{
+        background-color: ${(props) => props.theme.bg3};
+    }
   
 `;
