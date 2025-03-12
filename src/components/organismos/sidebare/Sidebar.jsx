@@ -6,13 +6,13 @@ import {SideBarCard} from "./SidebarCard";
 
 export function Sidebar({ state, setState }) {
     return (
-        <Main sidebar={state}>
+        <Main $sidebar={state}>
 
             <span className="sidebarBtn" onClick={() => setState(!state)}>
                 {<v.iconoflechaderecha />}
             </span>
 
-            <Container sidebar={state} className={state ? "active" : ""}>
+            <Container $sidebar={state} className={state ? "active" : ""}>
                 <div className="logoContent">
                     <div className="imgContent">
                         <img src={v.logo} alt="" />
@@ -96,7 +96,7 @@ overflow-x: hidden;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
 
-        transform: ${({ sidebar }) => (sidebar ? `scale(0.7)` : `scale(1.1)`)} rotate(${props => (props.theme.logorotate)});
+        transform: ${({ $sidebar }) => ($sidebar ? `scale(0.7)` : `scale(1.1)`)} rotate(${props => (props.theme.logorotate)});
 
         img{
             width: 100%;
@@ -105,7 +105,7 @@ overflow-x: hidden;
         
     }
     h2 {
-        display: ${({ sidebar }) => (sidebar ? `block` : `none`)};
+        display: ${({ $sidebar }) => ($sidebar ? `block` : `none`)};
         font-weight: 800;
     }
 
@@ -196,7 +196,7 @@ const Main = styled.div`
 
     z-index:2;
 
-    transform: ${({ sidebar }) => (sidebar ? `translateX(162px) rotate(0deg)` : `rotate(180deg)`)};
+    transform: ${({ $sidebar }) => ($sidebar ? `translateX(162px) rotate(0deg)` : `rotate(180deg)`)};
 
   }
 `;

@@ -3,7 +3,7 @@ import {Icono} from "../atomos/Icono";
 
 export function Button({ func, title, bgcolor, icon }) {
     return (
-        <Container type="submit" bgcolor={bgcolor}>
+        <Container type="submit" $bgcolor={bgcolor}>
             <Icono>{icon}</Icono>
             <span className="btn" onClick={func}>{title}</span>
         </Container>
@@ -22,7 +22,7 @@ const Container = styled.button`
     z-index: 2;
 
     .btn {
-        background-color: ${props => props.bgcolor};
+        background-color: ${props => props.$bgcolor};
         padding: 0.5em 1.3em;
         border-radius: 0.6rem;
         border: 3px solid black;
