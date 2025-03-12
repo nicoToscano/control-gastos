@@ -1,7 +1,7 @@
 import { supabase } from "./supabase.config";
 import { ObtenerIdAuthSupabase } from "./globalSupabase";
 import Swal from "sweetalert2";
-
+import cerdo from "../assets/logocerdo.png";
 
 export const InsertarUsuarios = async (p) => {
     try {
@@ -29,23 +29,29 @@ export const MostrarUsuarios = async () => {
 export async function ActualizarTemaMonedaUser(p) {
 
     try {
-        const {error} = await supabase.from('usuarios').update(p).eq('id', p.id);
+        const { error } = await supabase.from('usuarios').update(p).eq('id', p.id);
         if (error) {
             Swal.fire({
-                position: "top-center",
-                icon: "error",
-                title: "Error al editar la información",
                 showConfirmButton: false,
-                timer: 1500
+                imageUrl: cerdo,
+                imageWidth: 150,
+                imageHeight: 150,
+                width: 355,
+                icon: "error",
+                showConfirmButton: false,
+                timer: 1500,
             });
         }
 
         Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Actualización exitosa",
             showConfirmButton: false,
-            timer: 1500
+            imageUrl: cerdo,
+            imageWidth: 150,
+            imageHeight: 150,
+            width: 355,
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
         });
 
     } catch (error) {

@@ -19,7 +19,7 @@ const Container = styled.div`
     align-items: center;
     height: 100%;
     cursor: pointer;
-    border: 5px solid ${(props) => props.color};
+    border: 2px solid ${(props) => props.color};
     border-radius: 10px;
     padding: 10px;
     gap: 10px;
@@ -38,7 +38,7 @@ const Container = styled.div`
 
     
     &:hover {
-        background-color: ${(props) => props.color};
+        background-color: ${(props) => props.theme.bg5activeSelector};
         color: ${(props) => props.theme.text};
     }
 `

@@ -27,4 +27,6 @@ const Container = styled.div`
     top: ${(props) => props.top};
     box-shadow: ${v.boxshadowGray};
 
+    z-index: 5;
+
 `;
