@@ -23,21 +23,9 @@ export function SettingsTemplate() {
 
   const iconoDB = datausuarios.tema === "0" ? "☀️" : "🌙";
   const temaDB = datausuarios.tema === "0" ? "Light" : "Dark";
-  const temaInicial = selectTema.tema ? selectTema.tema : temaDB;
   const iconoInicial = selectTema.icono ? selectTema.icono : iconoDB;
+  const temaInicial = selectTema.descripcion ? selectTema.descripcion : temaDB;
   const temaSeleccionado = iconoInicial + " " + temaInicial;
-
-  const editar = async () => {
-    const temaElegido = selectTema.descripcion === "Light" ? "0" : "1";
-    const p = {
-      tema: temaElegido,
-      moneda: moneda,
-      pais: pais,
-      id: datausuarios.id
-    }
-    await editarTemaMonedaUser(p);
-
-  }
 
   return (
     <Container>
@@ -56,7 +44,12 @@ export function SettingsTemplate() {
           {
             stateListaPaises &&
             (
-              <ListaPaises setSelect={(p) => setSelect(p)} setState={() => setStateListaPaises(!stateListaPaises)} />
+              <ListaPaises
+                setSelect={(p) => setSelect(p)}
+                setState={() => setStateListaPaises(!stateListaPaises)}
+                editarTemaMonedaUser={editarTemaMonedaUser}
+                id={datausuarios.id}
+              />
             )
           }
 
@@ -67,15 +60,19 @@ export function SettingsTemplate() {
           {
             stateListaTemas &&
             (
-              <ListaGenerica data={TemasData} setSelect={setSelectTema} setState={() => setStateListaTemas(!stateListaTemas)}>
-
-              </ListaGenerica>
+              <ListaGenerica
+                data={TemasData}
+                setSelect={setSelectTema}
+                setState={() => setStateListaTemas(!stateListaTemas)}
+                editarTemaMonedaUser={editarTemaMonedaUser}
+                id={datausuarios.id}
+              />
             )
 
           }
         </ContentCard>
 
-        <Button title="Guardar" bgcolor={(props) => props.theme.bg5} icon={<v.iconoguardar/>} func={editar}/>
+        {/* <Button title="Guardar" bgcolor={(props) => props.theme.bg5} icon={<v.iconoguardar/>} func={editar}/> */}
 
       </section>
 
