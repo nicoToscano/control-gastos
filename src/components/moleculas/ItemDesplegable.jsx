@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import { Icono } from "../atomos/Icono";
+import { ColorContent } from '../atomos/ColorContent';
 
 export function ItemDesplegable({ item, funcion }) {
     return (
         <Container onClick={funcion}>
             <Icono className="icono">{item.icono}</Icono>
+            <ColorContent $alto="12px" $ancho="12px" $color={item.color}/>
             <span className="texto">{item.text}</span>
 
         </Container>
