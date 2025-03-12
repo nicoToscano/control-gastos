@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { v } from '../../styles/variables';
 import { InputBuscadorLista } from '../moleculas/InputBuscadorLista';
 import iso from 'iso-country-currency';
 import { ConvertirCapital } from '../../utils/Conversiones'
@@ -7,7 +6,7 @@ import { useState } from 'react';
 import { Device } from '../../styles/breakpoints';
 import { BtnCerrar } from '../atomos/btnCerrar';
 
-export function ListaPaises({ setSelect, setState }) {
+export function ListaPaises({ setSelect, setState, editarTemaMonedaUser, id}) {
 
     const [dataResult, setDataResult] = useState([]);
 
@@ -20,8 +19,15 @@ export function ListaPaises({ setSelect, setState }) {
         setDataResult(filtrado);
     }
 
-    function seleccionar(item) {
+    function actualizar(item) {
         setSelect(item);
+
+        editarTemaMonedaUser({
+            moneda: item.symbol,
+            pais: item.countryName,
+            id: id
+        });
+
         setState();
     }
 
@@ -36,7 +42,7 @@ export function ListaPaises({ setSelect, setState }) {
                 dataResult.length > 0 &&
                 dataResult.map((item, index) => {
                     return (
-                        <ItemContainer key={index} onClick={() => seleccionar(item)}>
+                        <ItemContainer key={index} onClick={() => actualizar(item)}>
                             <span>{item.countryName}</span>
                             <span>{item.symbol}</span>
                         </ItemContainer>

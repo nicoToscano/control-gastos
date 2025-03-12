@@ -15,6 +15,9 @@ export const useUsuariosStore = create((set, get) => ({
 
     editarTemaMonedaUser: async (p) => {
         await ActualizarTemaMonedaUser (p);
+        // Actualizar el estado
+        const { mostrarUsuarios } = get();
+        set(mostrarUsuarios);
     }
 
 }));

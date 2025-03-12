@@ -2,12 +2,19 @@ import styled from 'styled-components';
 import { Device } from '../../styles/breakpoints';
 import { BtnCerrar } from '../atomos/btnCerrar';
 
-export function ListaGenerica({ data, setSelect, setState }) {
+export function ListaGenerica({ data, setSelect, setState, editarTemaMonedaUser, id }) {
 
-    function seleccionar(item) {
-        setSelect(item);
+    function actualizar(item) {
+        setSelect(item);    
+
+        const temaElegido = item.descripcion === "Light" ? "0" : "1";
+        editarTemaMonedaUser({
+            tema: temaElegido,
+            id: id
+        });
+    
         setState();
-    }
+    }    
 
     return (
         <Container>
@@ -20,7 +27,7 @@ export function ListaGenerica({ data, setSelect, setState }) {
                 {
                     data.map((item, index) => {
                         return (
-                            <ItemContainer key={index} onClick={() => seleccionar(item)}>
+                            <ItemContainer key={index} onClick={() => actualizar(item)}>
                                 <span>{item.icono}</span>
                                 <span>{item.descripcion}</span>
                             </ItemContainer>
@@ -70,6 +77,7 @@ const ItemContainer = styled.section`
     border-radius: 10px;
     cursor: pointer;
     transition: 0.3s;
+    font-weight: 700;
 
     &:hover {
         background-color: ${(props) => props.theme.bg5active};
