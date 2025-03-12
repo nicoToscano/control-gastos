@@ -8,6 +8,7 @@ import { useUsuariosStore } from '../../store/UsuariosStore';
 import { ListaGenerica } from '../moleculas/ListaGenerica';
 import { TemasData } from '../../utils/dataEstatica';
 import { Button } from '../moleculas/Button';
+import { Device } from '../../styles/breakpoints';
 
 export function SettingsTemplate() {
   const { datausuarios, editarTemaMonedaUser } = useUsuariosStore();
@@ -40,9 +41,9 @@ export function SettingsTemplate() {
       <section className="section2">
         <ContentCard>
           <span>Moneda:</span>
-          <Selector state={stateListaPaises} color={(props) => props.theme.bg5} funcion={() => setStateListaPaises(!stateListaPaises)} texto1={paisSeleccionado} />
+          <Selector state={stateListaPaises} color={(props) => props.theme.bg5} funcion={() =>{ setStateListaPaises(!stateListaPaises); setStateListaTemas(false);}} texto1={paisSeleccionado} />
           {
-            stateListaPaises &&
+            stateListaPaises && !stateListaTemas &&
             (
               <ListaPaises
                 setSelect={(p) => setSelect(p)}
@@ -56,9 +57,9 @@ export function SettingsTemplate() {
         </ContentCard>
         <ContentCard>
           <span>Tema:</span>
-          <Selector state={stateListaTemas} color={(props) => props.theme.bg5} texto1={temaSeleccionado} funcion={() => setStateListaTemas(!stateListaTemas)} />
+          <Selector state={stateListaTemas} color={(props) => props.theme.bg5} texto1={temaSeleccionado} funcion={() => {setStateListaTemas(!stateListaTemas); setStateListaPaises(false);}} />
           {
-            stateListaTemas &&
+            stateListaTemas && !stateListaPaises &&
             (
               <ListaGenerica
                 data={TemasData}
@@ -76,7 +77,6 @@ export function SettingsTemplate() {
 
       </section>
 
-      <main className='main'></main>
     </Container>
   );
 }
@@ -91,8 +91,7 @@ display: grid;
 grid-template: 
   "header" 100px
   "section1" 100px
-  "section2" 50px
-  "main" auto;
+  "section2" auto;
 
 .header {
   grid-area: header;
@@ -119,11 +118,13 @@ grid-template:
   flex-direction: column;
   justify-content: start;
   gap: 30px;
-}
 
-main {
-  grid-area: main;
-  /* background-color: rgba(199, 239, 255, 0.26); */
+  @media ${Device.tablet} {
+    flex-direction: row;
+    height: 100px;
+    justify-content: space-evenly;
+  }
+
 }
 
 `;
@@ -136,5 +137,9 @@ const ContentCard = styled.div`
   gap: 20px;
   position: relative;
   width: 100%;
-  height: 100%;
+
+  @media ${Device.desktop} {
+    width: 250px;    
+  }
+
 `
