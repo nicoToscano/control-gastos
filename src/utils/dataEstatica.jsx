@@ -52,17 +52,17 @@ export const LinksArray = [
   {
     label: "Categorias",
     icon: <MdOutlineAnalytics />,
-    to: "/categorias",
+    to: "/categories",
   },
   {
     label: "Movimientos",
     icon: <AiOutlineApartment />,
-    to: "/movimientos",
+    to: "/movements",
   },
   {
     label: "Informes",
     icon: <MdOutlineAnalytics />,
-    to: "/informes",
+    to: "/information",
   },
   {
     label: "Dashboard",
@@ -79,7 +79,7 @@ export const SecondarylinksArray = [
   {
     label: "Acerca de",
     icon: <TbPig />,
-    to: "/acercade",
+    to: "/about",
   },
 ];
 //temas
