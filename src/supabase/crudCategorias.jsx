@@ -25,12 +25,12 @@ export async function InsertarCategorias(p) {
     }
 }
 
-export async function MostrarCategorias() {
+export async function MostrarCategorias(p) {
     try {
         const { data } = await supabase
         .from('categorias')
         .select()
-        .eq("idUsuario", idusuario)
+        .eq("idUsuario", p.idusuario)
         .eq("tipo", p.tipo)
         .order("id", { ascending: false });
         
