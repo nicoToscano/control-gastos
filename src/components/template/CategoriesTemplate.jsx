@@ -6,6 +6,8 @@ import { BtnDesplegable } from "../moleculas/BtnDesplegable";
 import { useOperacionesStore } from "../../store/OperacionesStore";
 import { ListaMenuDesplegable } from "../moleculas/ListaMenuDesplegable";
 import { DataDesplegableTipo } from "../../utils/dataEstatica";
+import { BtnFiltro } from "../moleculas/BtnFiltro";
+import { v } from "../../styles/variables";
 
 export function CategoriesTemplate() {
   const [state, setState] = useState(false);
@@ -66,7 +68,11 @@ export function CategoriesTemplate() {
         </ContentFiltros>
       </section>
 
-      <section className="section2"></section>
+      <section className="section2">
+        <ContentFiltro>
+            <BtnFiltro bgColor={bgCategoria} textColor={colorCategoria} icono={<v.agregar/>}/>
+        </ContentFiltro>
+      </section>
 
       <main className="main"></main>
     </Container>
@@ -88,27 +94,33 @@ const Container = styled.div`
 
   .header {
     grid-area: header;
-    background-color: rgb(255, 210, 199);
+    background-color: rgba(255, 210, 199, 0.5);
     display: flex;
     align-items: center;
   }
 
   .type {
     grid-area: type;
-    background-color: rgb(221, 255, 176);
+    background-color: rgb(221, 255, 176, 0.5);
     display: flex;
     align-items: center;
   }
 
   .section2 {
     grid-area: section2;
-    background-color: rgb(164, 181, 255);
+    background-color: rgb(164, 181, 255, 0.5);
     display: flex;
     align-items: center;
+    justify-content: end;
   }
 
   main {
     grid-area: main;
-    background-color: rgb(199, 239, 255);
+    background-color: rgb(199, 239, 255, 0.5);
   }
+`;
+
+const ContentFiltro = styled.div`
+display: flex;
+flex-wrap: wrap;
 `;
